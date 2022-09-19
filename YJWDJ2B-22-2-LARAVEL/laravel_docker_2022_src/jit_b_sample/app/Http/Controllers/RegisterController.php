@@ -6,6 +6,7 @@ namespace App\Http\Controllers; // 자바의 패키지 개념
 use App\Models\User; // 자바의 import 유사
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // 암호화를 위해
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller{
     public function create(){
@@ -27,6 +28,7 @@ class RegisterController extends Controller{
            'email' => $request->email,
            'password' => Hash::make($request -> password),
         ]);
+        event(new Registered($user));
         return view('regist.complete', compact('user'));
     }
 }

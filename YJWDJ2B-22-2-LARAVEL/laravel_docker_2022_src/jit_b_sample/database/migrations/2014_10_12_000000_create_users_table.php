@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema; // 파사드 사용
 
-return new class extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() // 테이블 생성
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {// ('테이블명', 클로저)
             $table->id();
@@ -29,8 +29,8 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down() // 테이블 삭제
+    public function down()
     {
         Schema::dropIfExists('users');
     }
-};
+}

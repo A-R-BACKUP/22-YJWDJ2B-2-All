@@ -32,7 +32,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 */
 
 require __DIR__.'/../vendor/autoload.php';
-
+// 오토로더 임포트, 로딩
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -45,11 +45,21 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
+// 프레임워크 실행
+// 라라벨의 앱객체: Illuminate\Foundation\Application 인스턴스
+//                서비스컨테이너
+// 라라벨 서비스의 뼈대를 구성하는 컴포넌트
+
+
+
 
 $kernel = $app->make(Kernel::class);
+// 어플리케이션의 실행, HTTP 응답 송신
+
 
 $response = $kernel->handle(
     $request = Request::capture()
 )->send();
 
 $kernel->terminate($request, $response);
+// 종료 처리
