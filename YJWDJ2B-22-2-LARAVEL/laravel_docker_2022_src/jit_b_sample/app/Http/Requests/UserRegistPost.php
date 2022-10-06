@@ -25,7 +25,9 @@ class UserRegistPost extends FormRequest
     {
         return [
             // validation rules: 유효성 체크의 규칙을 작성
-            'name' => 'required'
+            'name' => ['required', 'max:20'],
+            'email' => ['required', 'email', 'max:255']
+            //'age' => 'integer|min:19'
         ];
     }
 }
