@@ -154,7 +154,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => [  // 서비스 프로바이더 등록
 
         /*
          * Laravel Framework Service Providers...
@@ -208,7 +208,7 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
+    'aliases' => Facade::defaultAliases()->merge([  // 파사드 등록
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

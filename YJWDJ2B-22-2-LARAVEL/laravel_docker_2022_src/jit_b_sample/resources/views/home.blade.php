@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset='utf-8'>
-    <title>Main Page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫화면</title>
 </head>
 <body>
-<p>LARAVE Main Page
-    @if (Auth::check())
-        {{ \Auth::user()->name }}님</p>
-<p><a href="/logout">로그아웃</a></p>
+    <p> 안녕? 라라벨! 잘해보자!</p>
+    <p>안녕하세요! 
+@if (Auth::check())
+    {{ \Auth::user()->name }}님</p>
+    <p><a href="/logout">로그아웃</a></p>
 @else
     게스트님</p>
     <p><a href="/login">로그인</a><br><a href="/register">회원 등록</a></p>

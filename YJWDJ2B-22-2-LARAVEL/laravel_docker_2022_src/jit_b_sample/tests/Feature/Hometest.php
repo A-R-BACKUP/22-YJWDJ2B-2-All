@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class Hometest extends TestCase
+class HomeTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -19,12 +19,15 @@ class Hometest extends TestCase
 
         $response->assertStatus(200);
     }
-    public function testStatusCode(){
+    public function testStausCode(){
         $response = $this->get('/home');
         $response->assertStatus(200);
+
     }
     public function testBody(){
         $response = $this->get('/home');
-        $response->assertSeeText("SSIBAL");
+        //$response->assertSeeText("안녕하세요?");
+        $response->assertSeeText("안녕? 라라벨! 잘해보자!");
+        
     }
 }
