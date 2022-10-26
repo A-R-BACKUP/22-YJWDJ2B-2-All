@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +79,9 @@ Route::post('/user', 'App\Http\Controllers\UserController@store');
 // });
 Route::get('/uregist','App\Http\Controllers\UserController@create');
 Route::post('/uregist','App\Http\Controllers\UserController@register');
+
+Route::get('text', Controllers\TextAction::class);
+Route::get('json', Controllers\JsonAction::class);
+Route::get('download', Controllers\DownloadAction::class);
+Route::get('stream', Controllers\StreamAction::class);
+Route::get('article', Controllers\ArticlePayloadAction::class);

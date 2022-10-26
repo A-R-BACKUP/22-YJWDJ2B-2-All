@@ -27,12 +27,13 @@ class UserController extends Controller
     }
     public function detail(string $id):ViewFactory{
         return view('user.detail');
-    }public function userDetail(string $id): Res{
+    }
+    public function userDetail(string $id): Res{
         return new Res(view('user.detail'), Res::HTTP_OK);
     }
     public function create(){
-        return view('regist.register');
-        // laravel_root/resources/views/regist/register.blade.php
+        return view('regist.register');  
+        // laravel_root/resources/views/regist/register.blade.php 
     }
     public function register(UserRegistPost $req){
         $name= $req->get('name');
@@ -44,7 +45,7 @@ class UserController extends Controller
                 'name'=>$name,
                 'email'=>$email,
                 'password'=>Hash::make($password),
-
+                
             ]
         );
         return view('regist.complete',compact('user'));
