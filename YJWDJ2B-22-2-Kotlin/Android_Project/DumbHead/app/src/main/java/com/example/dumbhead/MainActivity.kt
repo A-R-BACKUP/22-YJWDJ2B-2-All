@@ -2,6 +2,7 @@ package com.example.dumbhead
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 wincount++
                 result = "승리"
             }
-            textView = "$win 승, $tie 무, $lose 패"
+            textView = "$wincount 승, $drawcount 무, $losecount 패"
 
             binding.result.text = textView
             binding.winlose.text = result

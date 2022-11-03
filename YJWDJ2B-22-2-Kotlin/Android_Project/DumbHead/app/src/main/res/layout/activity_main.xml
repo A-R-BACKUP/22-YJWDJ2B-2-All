@@ -6,80 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선택"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
-
-    <TextView
-        android:id="@+id/drawcount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 무"
-        app:layout_constraintEnd_toStartOf="@+id/losecount"
-        tools:layout_editor_absoluteY="171dp" />
-
-    <TextView
-        android:id="@+id/wincount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="0 승"
-        app:layout_constraintEnd_toStartOf="@+id/drawcount"
-        tools:layout_editor_absoluteY="171dp" />
-
-    <TextView
-        android:id="@+id/losecount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 패"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="171dp" />
-
     <Button
-        android:id="@+id/scissors"
+        android:id="@+id/buttonScissors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:text="가위"
-        app:layout_constraintBottom_toTopOf="@+id/rock"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonRock"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonRock"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
 
     <Button
-        android:id="@+id/rock"
+        android:id="@+id/buttonRock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="바위"
-        app:layout_constraintBottom_toTopOf="@+id/paper"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonScissors" />
 
     <Button
-        android:id="@+id/paper"
+        android:id="@+id/buttonPaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="보"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="433dp" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonRock"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonRock"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRock" />
 
     <Button
-        android:id="@+id/clearbutton"
+        android:id="@+id/buttonReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
         android:text="초기화"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="583dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPaper" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="217dp" />
+        android:layout_marginTop="50dp"
+        android:text="total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="결과"
+        app:layout_constraintEnd_toEndOf="@+id/total"
+        app:layout_constraintStart_toStartOf="@+id/total"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
