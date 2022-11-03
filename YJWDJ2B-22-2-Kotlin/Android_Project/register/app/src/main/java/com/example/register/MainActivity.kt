@@ -2,9 +2,11 @@ package com.example.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import androidx.lifecycle.DefaultLifecycleObserver
 import com.example.register.databinding.ActivityMainBinding
@@ -57,6 +59,19 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    private val onApply= View.OnClickListener {
+        val course = when(binding.radioGroup.checkedRadioButtonId){
+            R.id.radioButtonAdult -> "성인반"
+            else -> "학생반"
+        }
+
+        val intent = Intent( this, CourseActivity::class.java ).apply {
+            putExtra("name", binding.editTextTextPersonName.text.toString())
+            putExtra("course", course)
+        }
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -72,6 +87,7 @@ class MainActivity : AppCompatActivity(){
         binding.radioGroup.setOnCheckedChangeListener { _, _ ->  updateWidgets()}
         binding.checkBoxEURA.setOnClickListener { updateWidgets() }
 
+        binding.buttonApply.setOnClickListener(onApply)
         Log.i("MainActivity", "onCreate") // 로그캣 활성화
     }
 
