@@ -6,9 +6,29 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
+import androidx.lifecycle.DefaultLifecycleObserver
 import com.example.register.databinding.ActivityMainBinding
 
+//class MyCycle{
+//    fun start(){
+//        Log.i("MainActivity", "Mycycle-Started")
+//    }
+//    fun stop(){
+//        Log.i("MainActivity", "Mycycle-Stopped")
+//    }
+//}
+
+class MyCycle:DefaultLifecycleObserver{ //JETPACK
+    fun onStart(){
+        Log.i("MainActivity", "Mycycle-Started")
+    }
+    fun onStop(){
+        Log.i("MainActivity", "Mycycle-Stopped")
+    }
+}
+
 class MainActivity : AppCompatActivity(){
+    private lateinit var myCycle:MyCycle
     private val binding:ActivityMainBinding by lazy{
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -41,6 +61,9 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        myCycle = MyCycle()
+        lifecycle.addObserver(myCycle)
+
         binding.progressBar.max=4
 
         binding.editTextTextPersonName.addTextChangedListener(textWatcher)
@@ -48,5 +71,36 @@ class MainActivity : AppCompatActivity(){
 
         binding.radioGroup.setOnCheckedChangeListener { _, _ ->  updateWidgets()}
         binding.checkBoxEURA.setOnClickListener { updateWidgets() }
+
+        Log.i("MainActivity", "onCreate") // 로그캣 활성화
     }
+
+//    Activity Lifecycle
+
+//    override fun onStart(){
+//        super.onStart()
+//        Log.i("MainActivity", "onStart")
+//        myCycle.start()
+//    }
+//
+//    override fun onResume(){
+//        super.onResume()
+//        Log.i("MainActivity", "onResume")
+//    }
+//
+//    override fun onPause(){
+//        super.onPause()
+//        Log.i("MainActivity", "onStart")
+//    }
+//
+//    override fun onStop(){
+//        super.onStop()
+//        Log.i("MainActivity", "onStart")
+//        myCycle.stop()
+//    }
+//
+//    override fun onDestroy(){
+//        super.onDestroy()
+//        Log.i("MainActivity", "onStart")
+//    }
 }
