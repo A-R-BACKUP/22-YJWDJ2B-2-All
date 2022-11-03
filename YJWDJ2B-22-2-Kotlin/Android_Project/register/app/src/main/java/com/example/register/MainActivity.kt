@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.DefaultLifecycleObserver
 import com.example.register.databinding.ActivityMainBinding
 
@@ -34,6 +35,12 @@ class MainActivity : AppCompatActivity(){
     private val binding:ActivityMainBinding by lazy{
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    private val getResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            val result = it.resultCode
+            Log.d("MainActivity", "Activity result code: $result")
+        }
 
     private fun updateWidgets(){
         var progress=0
@@ -69,7 +76,8 @@ class MainActivity : AppCompatActivity(){
             putExtra("name", binding.editTextTextPersonName.text.toString())
             putExtra("course", course)
         }
-        startActivity(intent)
+        // startActivity(intent)
+        getResult.launch(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
