@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // app: 서비스컨테이너
+        $this->app->bind(
+            \App\DataProvider\PublisherRepositoryInterface::class,
+            \App\Domain\Repository\PublisherRepository::class
+
+        );
     }
 
     /**
