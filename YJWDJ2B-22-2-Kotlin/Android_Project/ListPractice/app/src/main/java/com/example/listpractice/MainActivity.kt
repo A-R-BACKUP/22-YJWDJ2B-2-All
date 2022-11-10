@@ -1,9 +1,11 @@
 package com.example.listpractice
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.AbsListView.RecyclerListener
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +45,19 @@ class MainActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = manager
         binding.recyclerView.adapter = adapter
+
+        adapter.setListener(ChatAdapter.OnItemClickListener {
+            Toast.makeText(this@MainActivity,
+            it.toString(), Toast.LENGTH_SHORT).show()
+
+            val chatRoomInfo = adapter.getItem(it)
+            if(chatRoomInfo!=null){
+                val intent = Intent(this, RoomActivity::class.java).apply {
+                    putExtra("name", chatRoomInfo.name)
+                }
+                startActivity(intent)
+            }
+        })
 
         binding.buttonRandom.setOnClickListener {
             val data = DataGenerator.get()
