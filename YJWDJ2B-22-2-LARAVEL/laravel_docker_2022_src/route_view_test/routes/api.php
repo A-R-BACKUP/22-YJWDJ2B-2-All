@@ -21,3 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/publishers', [App\Http\Controllers\PublisherAction::class, 'create']);
 // POST /api/publishers 요청 처리
+
+//Route::get('/users',App\Http\Controllers\UserAction::class);  // 라우팅
+
+Route::group(
+  ['middleware'=>'api'], 
+  function($router){
+    Route::post('/users/login','App\Http\Controllers\User\LoginAction');
+    Route::post('/users', \App\Http\Controllers\User\RetrieveAction::class)->middleware('auth:jwt');
+  }
+);

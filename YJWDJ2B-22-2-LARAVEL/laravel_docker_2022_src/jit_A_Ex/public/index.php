@@ -1,0 +1,65 @@
+<?php
+
+// 엔트리 포인트
+
+
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+/*
+|--------------------------------------------------------------------------
+| Check If The Application Is Under Maintenance
+|--------------------------------------------------------------------------
+|
+| If the application is in maintenance / demo mode via the "down" command
+| we will load this file so that any pre-rendered content can be shown
+| instead of starting the framework, which could cause an exception.
+|
+*/
+
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
+
+require __DIR__.'/../vendor/autoload.php';
+// 오토로더, 라라벨의 각종 기능에 대한 객체 생성 등 코딩처리를 프로그래머가 하지 않아도 가능
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request using
+| the application's HTTP kernel. Then, we will send the response back
+| to this client's browser, allowing them to enjoy our application.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+// 프레임워크의 실행, 라라벨의 앱객체 : 서비스 컨테이너
+// 라라벨 서비스의 뼈대를 구성하는 컴포넌트
+// Illuminate\Foundation\Application 인스턴스
+
+
+$kernel = $app->make(Kernel::class);
+// 커널 생성
+
+// 어플리케이션 실행
+$response = $kernel->handle(
+    $request = Request::capture()  // Request 객체를 붙잡아와서 처리
+)->send();
+
+$kernel->terminate($request, $response); // 사용자에게 응답 전송처리
